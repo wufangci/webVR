@@ -6,14 +6,15 @@
     <!-- <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script> -->
     <!-- 穩定版 -->
     <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@1f00d0beadf87bad7d275c174616e048f8b573fc/dist/aframe-master.min.js"></script>
-    <title>Document</title>
+
+    <title>WebVR</title>
   </head>
 
   <body>
     <!-- control + options + i : 顯示場景編輯器 -->
     <!-- a-scene 基本虛擬空間-->
-    <a-scene background="color:black">
-      <a-assets>
+    <a-scene>
+      <a-assets background="">
         <!-- brick 磚塊材質 -->
         <img
           id="brick"
@@ -34,14 +35,48 @@
           id="brick-roughness"
           src="./assets/textures/concrete_brick_wall/Rough_1k.png"
         />
+        <!-- rusty 金屬材質  -->
+        <img
+          id="rusty"
+          src="./assets/textures/rusty_metal/diff_1k.png"
+          alt=""
+        />
+        <!-- rusty normal map  -->
+        <img
+          id="rusty-normal-map"
+          src="./assets/textures/rusty_metal/nor_1k.png"
+          alt=""
+        />
+
+        <!-- rusty roughness  -->
+        <img
+          id="rusty-roughness"
+          src="./assets/textures/rusty_metal/rough_1k.png"
+        />
+        <!-- rusty roughness metalness map  -->
+
+        <img
+          id="rusty-metalness-map"
+          src="./assets/textures/rusty_metal/spec_1k.png"
+        />
+        <img id="street" src="../L1/assets/scene-1.jpg" />
       </a-assets>
+      <a-sky src="#street"></a-sky>
+
       <!-- 貼材質示範 
-        src : 放貼圖
+        src : 放貼圖 
         normal-map : 模擬貼圖會有的凹凸效果，圖片通常是紫色
         normal-scale : x,y 可以旋轉受光面
         repeat :  x,y 貼圖要在表面貼幾次
         normal-texture-repeat : normal-map 重複幾次
         roughness : 表面粗糙程度
+        roughness-map : 表面粗糙程度貼圖
+
+        metalness : 反射鏡面
+        metalness-map : 反射鏡面貼圖 一定要搭配 metalness 屬性否則沒有作用
+        camera-cube-env : 引入 3D 場景的套件的屬性 用物件的位置反照外面 
+        camera-cube-env＿distance： 相機照的距離
+        camera-cube-env＿resolution：
       -->
 
       <!-- src 可以直接放上表面材質 -->
@@ -52,12 +87,12 @@
         normal-scale="1 -0.5"
         repeat="0.5 0.5"
         position="2  1 -4"
-        roughness="#brick-roughness"
+        roughness-map="#brick-roughness"
       ></a-box>
       <a-box
         src="#brick"
         normal-map="#brick-normal-map-light"
-        roughness="#brick-roughness"
+        roughness-map="#brick-roughness"
         position="0  1 -4"
       ></a-box>
       <a-box
@@ -70,6 +105,29 @@
         roughness="2"
       ></a-box>
       <!-- end brick example -->
+      <!-- start rusty example -->
+      <a-box
+        src="#rusty"
+        normal-map="#rusty-normal-map"
+        roughness-map="#rusty-roughness"
+        metalness-map="#rusty-metalness-map"
+        metalness="1"
+        position="-4 1 -4"
+        roughness="0"
+        camera-cube-env="distance: 100000; 
+                            resolution: 100"
+      ></a-box>
+      <a-box
+        position="-6 1 -4"
+        metalness="1"
+        roughness="0"
+        camera-cube-env="distance: 100000; 
+                          resolution: 100"
+      ></a-box>
+
+      <!-- end rusty example -->
     </a-scene>
+    <!-- 加入新 component 的 script 抓到網頁中 3D 場景 -->
+    <script src="https://cdn.jsdelivr.net/gh/colinfizgig/aframe_Components/components/camera-cube-env.js"></script>
   </body>
 </html>
