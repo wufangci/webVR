@@ -12,6 +12,64 @@
   <body>
     <!-- control + options + i : 顯示場景編輯器 -->
     <!-- a-scene 基本虛擬空間-->
-    <a-scene background="color: #57E481"></a-scene>
+    <a-scene background="color:black">
+      <a-assets>
+        <!-- brick 磚塊材質 -->
+        <img
+          id="brick"
+          src="./assets/textures/concrete_brick_wall/Diffuse_1k.png"
+        />
+        <!-- brick 磚塊材質  暗面-->
+        <img
+          id="brick-normal-map-dark"
+          src="./assets/textures/concrete_brick_wall/DX_Nor_1k.png"
+        />
+        <!-- brick 磚塊材質  亮面-->
+        <img
+          id="brick-normal-map-light"
+          src="./assets/textures/concrete_brick_wall/GL_Nor_1k.png"
+        />
+        <!-- brick 磚塊材質  粗糙度-->
+        <img
+          id="brick-roughness"
+          src="./assets/textures/concrete_brick_wall/Rough_1k.png"
+        />
+      </a-assets>
+      <!-- 貼材質示範 
+        src : 放貼圖
+        normal-map : 模擬貼圖會有的凹凸效果，圖片通常是紫色
+        normal-scale : x,y 可以旋轉受光面
+        repeat :  x,y 貼圖要在表面貼幾次
+        normal-texture-repeat : normal-map 重複幾次
+        roughness : 表面粗糙程度
+      -->
+
+      <!-- src 可以直接放上表面材質 -->
+      <!-- start brick example -->
+      <a-box
+        src="#brick"
+        normal-map="#brick-normal-map-dark"
+        normal-scale="1 -0.5"
+        repeat="0.5 0.5"
+        position="2  1 -4"
+        roughness="#brick-roughness"
+      ></a-box>
+      <a-box
+        src="#brick"
+        normal-map="#brick-normal-map-light"
+        roughness="#brick-roughness"
+        position="0  1 -4"
+      ></a-box>
+      <a-box
+        src="#brick"
+        normal-map="#brick-normal-map-light"
+        normal-scale="0.2 -0.5"
+        normal-texture-repeat="2 2"
+        repeat="2 2"
+        position="-2 1 -4"
+        roughness="2"
+      ></a-box>
+      <!-- end brick example -->
+    </a-scene>
   </body>
 </html>
