@@ -59,6 +59,13 @@
           id="rusty-metalness-map"
           src="./assets/textures/rusty_metal/spec_1k.png"
         />
+        <!--  map 環境光遮蔽 -->
+
+        <img
+          id="brick-ao"
+          src="./assets/textures/concrete_brick_wall/AO_1k.png"
+          alt=""
+        />
         <img id="street" src="../L1/assets/scene-1.jpg" />
       </a-assets>
       <a-sky src="#street"></a-sky>
@@ -79,21 +86,29 @@
         camera-cube-env＿resolution：
       -->
 
-      <!-- src 可以直接放上表面材質 -->
       <!-- start brick example -->
       <a-box
         src="#brick"
-        normal-map="#brick-normal-map-dark"
-        normal-scale="1 -0.5"
-        repeat="0.5 0.5"
+        repeat=""
         position="2  1 -4"
+        normal-map="#brick-normal-map-light"
         roughness-map="#brick-roughness"
       ></a-box>
       <a-box
         src="#brick"
+        normal-scale="1 -0.5"
+        repeat=""
+        position="4  1 -4"
+        normal-map="#brick-normal-map-dark"
+        roughness-map="#brick-roughness"
+      ></a-box>
+      <a-box
+        src="#brick"
+        position="0  1 -4"
         normal-map="#brick-normal-map-light"
         roughness-map="#brick-roughness"
-        position="0  1 -4"
+        ambient-occlusion-map="#brick-ao"
+        ao
       ></a-box>
       <a-box
         src="#brick"
@@ -128,6 +143,7 @@
       <!-- end rusty example -->
     </a-scene>
     <!-- 加入新 component 的 script 抓到網頁中 3D 場景 -->
+    <script src="./js/ao-utils.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/colinfizgig/aframe_Components/components/camera-cube-env.js"></script>
   </body>
 </html>
