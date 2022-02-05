@@ -15,6 +15,10 @@
   </head>
   <body>
     <a-scene background="color: black;">
+      <a-assets-item
+        id="bench"
+        src="./assets/model/future_bench/scene.gltf"
+      ></a-assets-item>
       <!-- room 可以用 material 來改變顏色 與 顯示空間的牆壁  side 
 				rw-room 房間單位
 				rw-wall 房間門
@@ -25,6 +29,7 @@
 				rw-doorhole 挖一個門出來
 			-->
       <!-- room 1 -->
+
       <rw-room
         material="color: white ; side: double;"
         length="14.8"
@@ -44,7 +49,6 @@
         <rw-ceiling material="color: #AAA;"></rw-ceiling>
         <rw-floor material="color: #AAA;"></rw-floor>
       </rw-room>
-
       <rw-doorLink
         from="#doorMain"
         to="#doorSecond"
@@ -67,7 +71,6 @@
         height="3"
       ></rw-doorLink>
       <!-- room 2 -->
-
       <rw-room
         material="color: white ; side: double;"
         length="14.8"
@@ -86,10 +89,9 @@
         </rw-wall>
         <rw-wall position="0 0 0"></rw-wall>
         <rw-ceiling material="color: #AAA;"></rw-ceiling>
-        <rw-floor material="color: #AAA;"></rw-floor>
+        <rw-floor material="color: #424242;"></rw-floor>
       </rw-room>
       <!-- <rw-doorlink from="#doorMain" to="#doorSecond"></rw-doorlink> -->
-
       <!-- room 3 -->
 
       <rw-room
@@ -105,7 +107,7 @@
           <rw-doorhole id="doorSixth"></rw-doorhole>
         </rw-wall>
         <rw-ceiling material="color: #AAA;"></rw-ceiling>
-        <rw-floor material="color: #AAA;"></rw-floor>
+        <rw-floor material="color: #424242;"></rw-floor>
       </rw-room>
 
       <!-- room 4 -->
@@ -125,8 +127,44 @@
           <rw-doorhole id="doorFourth"></rw-doorhole>
         </rw-wall>
         <rw-ceiling material="color: #AAA;"></rw-ceiling>
-        <rw-floor material="color: #AAA;"></rw-floor>
+        <rw-floor material="color: #424242;"></rw-floor>
       </rw-room>
+      <!-- 使用文字 -->
+      <a-text
+        value="EXHIBITION"
+        color="#212121"
+        font="https://cdn.aframe.io/fonts/Exo2Bold.fnt"
+        position="-3 3 0"
+      ></a-text>
+      <a-text
+        width="2"
+        value="--------------------------"
+        color="#212121"
+        font="https://cdn.aframe.io/fonts/Exo2Bold.fnt"
+        position="-3 2.76 0"
+      ></a-text>
+      <a-text
+        width="2"
+        value="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"
+        color="#616161"
+        position="-3 2 0"
+      ></a-text>
+      <!-- 使用圖片 -->
+
+      <a-image
+        width="6"
+        height="4"
+        position="-10.5 2.3 0.5"
+        src="../L3/img/29196508_1625241317524214_1821313394771230720_o.jpeg"
+      ></a-image>
+      <!-- 引入model -->
+
+      <a-gltf-model
+        src="#bench"
+        scale="1 1 1"
+        position="-10 0 7"
+        rotation="0 -180 0"
+      ></a-gltf-model>
     </a-scene>
   </body>
   <!-- 房間套件  本地下載安裝  -->
