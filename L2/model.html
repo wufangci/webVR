@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" conte nt="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- 穩定版 -->
+    <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@1f00d0beadf87bad7d275c174616e048f8b573fc/dist/aframe-master.min.js"></script>
+  </head>
+  <body>
+    <!-- GLT格式的模型可以在網頁上快速讀取 若找得到該格式推薦以 GLT 為優先  -->
+    <a-scene background="color: black">
+      <a-assets>
+        <!-- load model -->
+        <a-assets-item
+          id="lantern"
+          src="./assets/model/Lantern/Lantern.gltf"
+        ></a-assets-item>
+      </a-assets>
+      <!-- a-gltf-model :  使用 model 並引入來源 -->
+      <a-gltf-model
+        src="#lantern"
+        scale="0.2 0.2 0.2"
+        position="0 -1 -5"
+      ></a-gltf-model>
+    </a-scene>
+  </body>
+</html>
