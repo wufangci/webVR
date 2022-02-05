@@ -1,20 +1,134 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>VR Exhibition</title>
-		<meta charset="utf-8" name="description" content="">
-		
-        <!-- aframe script -->
-		<script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@1f00d0beadf87bad7d275c174616e048f8b573fc/dist/aframe-master.min.js"></script>
+  <head>
+    <title>VR Exhibition</title>
+    <meta charset="utf-8" name="description" content="" />
 
-        <!-- other component -->
-		<script src="https://recast-api.donmccurdy.com/aframe-inspector-plugin-recast.js"></script>
-		<script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
-		<script src="https://unpkg.com/aframe-text-geometry-component@0.5.1/dist/aframe-text-geometry-component.min.js"></script>
-		<script src="https://cdn.jsdelivr.net/gh/colinfizgig/aframe_Components/components/camera-cube-env.js"></script>
-		<script src="./js/aframe-room-component.js"></script>
+    <!-- aframe script -->
+    <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@1f00d0beadf87bad7d275c174616e048f8b573fc/dist/aframe-master.min.js"></script>
 
-	</head>
-	<body>
-	</body>
+    <!-- other component -->
+    <script src="https://recast-api.donmccurdy.com/aframe-inspector-plugin-recast.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+    <script src="https://unpkg.com/aframe-text-geometry-component@0.5.1/dist/aframe-text-geometry-component.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/colinfizgig/aframe_Components/components/camera-cube-env.js"></script>
+  </head>
+  <body>
+    <a-scene background="color: black;">
+      <!-- room 可以用 material 來改變顏色 與 顯示空間的牆壁  side 
+				rw-room 房間單位
+				rw-wall 房間門
+				rw-celling 天花板
+				rw-floor 地板
+				門先選要在哪兩面牆開洞，再用link連接起來 
+				rw-doorLink 連接房間
+				rw-doorhole 挖一個門出來
+			-->
+      <!-- room 1 -->
+      <rw-room
+        material="color: white ; side: double;"
+        length="14.8"
+        width="14.8"
+        height="14.8"
+        position="-15 0 0"
+      >
+        <!-- <rw-wall position="1 0 0" material="color: blue;"> -->
+        <rw-wall position="1 0 0">
+          <rw-doorhole id="doorMain"></rw-doorhole>
+        </rw-wall>
+        <rw-wall position="1 0 1">
+          <rw-doorhole id="doorFifth"></rw-doorhole>
+        </rw-wall>
+        <rw-wall position="0 0 1"></rw-wall>
+        <rw-wall position="0 0 0"></rw-wall>
+        <rw-ceiling material="color: #AAA;"></rw-ceiling>
+        <rw-floor material="color: #AAA;"></rw-floor>
+      </rw-room>
+
+      <rw-doorLink
+        from="#doorMain"
+        to="#doorSecond"
+        position="-5 0 1"
+        width="2"
+        height="3"
+      ></rw-doorLink>
+      <rw-doorLink
+        from="#doorThird"
+        to="#doorFourth"
+        position="8 -12 -7"
+        width="2"
+        height="3"
+      ></rw-doorLink>
+      <rw-doorLink
+        from="#doorFifth"
+        to="#doorSixth"
+        position="-25 8 7"
+        width="2"
+        height="3"
+      ></rw-doorLink>
+      <!-- room 2 -->
+
+      <rw-room
+        material="color: white ; side: double;"
+        length="14.8"
+        width="14.8"
+        height="14.8 "
+        position="-15 0 -15"
+      >
+        <rw-wall position="1 0 0"></rw-wall>
+        <!-- <rw-wall position="1 0 1" material="color: red;  side: double;"> -->
+        <rw-wall position="1 0 1" material="">
+          <rw-doorhole id="doorThird"></rw-doorhole>
+        </rw-wall>
+        <!-- <rw-wall position="0 0 1" material="color: blue;"> -->
+        <rw-wall position="0 0 1">
+          <rw-doorhole id="doorSecond"></rw-doorhole>
+        </rw-wall>
+        <rw-wall position="0 0 0"></rw-wall>
+        <rw-ceiling material="color: #AAA;"></rw-ceiling>
+        <rw-floor material="color: #AAA;"></rw-floor>
+      </rw-room>
+      <!-- <rw-doorlink from="#doorMain" to="#doorSecond"></rw-doorlink> -->
+
+      <!-- room 3 -->
+
+      <rw-room
+        material="color: white ; side: double;"
+        length="14.8"
+        width="14.8"
+        height="14.8"
+      >
+        <rw-wall position="1 0 0"></rw-wall>
+        <rw-wall position="1 0 1"></rw-wall>
+        <rw-wall position="0 0 1"></rw-wall>
+        <rw-wall position="0 0 0">
+          <rw-doorhole id="doorSixth"></rw-doorhole>
+        </rw-wall>
+        <rw-ceiling material="color: #AAA;"></rw-ceiling>
+        <rw-floor material="color: #AAA;"></rw-floor>
+      </rw-room>
+
+      <!-- room 4 -->
+
+      <rw-room
+        material="color: white ; side: double;"
+        length="14.8"
+        width="14.8"
+        height="14.8"
+        position="0 0 -15"
+      >
+        <rw-wall position="1 0 0"></rw-wall>
+        <rw-wall position="1 0 1"></rw-wall>
+        <rw-wall position="0 0 1"></rw-wall>
+        <!-- <rw-wall position="0 0 0" material="color: red;  side: double;"> -->
+        <rw-wall position="0 0 0">
+          <rw-doorhole id="doorFourth"></rw-doorhole>
+        </rw-wall>
+        <rw-ceiling material="color: #AAA;"></rw-ceiling>
+        <rw-floor material="color: #AAA;"></rw-floor>
+      </rw-room>
+    </a-scene>
+  </body>
+  <!-- 房間套件  本地下載安裝  -->
+  <script src="./js/aframe-room-component.js"></script>
 </html>
