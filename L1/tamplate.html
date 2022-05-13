@@ -13,25 +13,19 @@
     <a-scene background="color: black">
       <!-- 基本資源設置統一管理：可以處理快取-->
       <a-assets>
-        <img id="street" src="assets/scene-1.jpg" alt="" />
-        <img id="park" src="assets/scene-2.jpg" alt="" />
+        <!-- <img id="street" src="assets/scene-1.jpg" alt="" /> -->
+        <!-- <img id="park" src="assets/scene-2.jpg" alt="" /> -->
         <!-- 
             preload：先下載
             autoplay : 自動播放
             loop : 影片重複 
         -->
-        <video
-          id="video"
-          preload
-          autoplay
-          loop
-          src="assets/Ayutthaya.mp4"
-        ></video>
+        <video id="video" autoplay src="assets/Ayutthaya.mp4"></video>
       </a-assets>
 
       <!-- 建置場景 -->
       <!-- 場景：天空  / arc 360貼在 src裡-->
-      <a-sky src="#park"></a-sky>
+      <!-- <a-sky src="#park"></a-sky> -->
       <!-- 場景：天空  / arc 360貼在 src裡-->
       <a-videosphere src="#video"></a-videosphere>
     </a-scene>
