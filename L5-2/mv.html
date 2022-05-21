@@ -150,6 +150,16 @@
         ></a-assets-item>
         <!-- pool -->
       </a-assets>
+      <a-gltf-model
+        src="#model"
+        class="interactable"
+        scale="80 80 80"
+        position="20 400 -400"
+        rotation="0 0 0"
+        sound="src: #bg-music; positional:false; on:click; "
+        firstsound
+        emitonclick
+      ></a-gltf-model>
       <a-light
         type="point"
         mixin="animation__light"
@@ -222,7 +232,7 @@
       >
       </a-box> -->
 
-      <a-sphere
+      <!-- <a-sphere
         mixin="
           animation__rotation
           animation__position
@@ -237,24 +247,7 @@
         firstsound
         emitonclick
       >
-      </a-sphere>
-
-      <a-sphere
-        mixin="
-         animation__rotation
-         animation__position
-         animation__scaleUp 
-         animation__scaleDown"
-        class="interactable"
-        rotation="-90 0 0"
-        delay="10"
-        color="grey"
-        position="1 0 -5"
-        sound="src: #bg-music; positional:false; on:click; "
-        firstsound
-        emitonclick
-      >
-      </a-sphere>
+      </a-sphere> -->
 
       <!-- 
        click event 需要 cursor  

@@ -9,12 +9,6 @@ AFRAME.registerComponent("generatefloor", {
       this.generate();
     });
   },
-  // 更新
-  update: function () {},
-  // 移除
-  remove: function () {},
-  //
-  tick: function () {},
   //事件
   generate: function () {
     /**

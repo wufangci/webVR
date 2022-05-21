@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MV</title>
+    <meta charset="utf-8" name="description" content="" />
+
+    <!-- aframe script -->
+    <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@1f00d0beadf87bad7d275c174616e048f8b573fc/dist/aframe-master.min.js"></script>
+    <!-- <script src="./mv-template/js/soundutils.js"></script> -->
+
+    <!-- other component -->
+
+    <!-- find somewhere to credit  -->
+    <!-- Music: Le Gang 
+    https://soundcloud.com/thisislegang/in-tro -->
+    <script src="./mv-template/js/soundutils.js"></script>
+    <script src="./mv-template/js/emitOnclick.js"></script>
+    <script src="./mv-template/js/generateFloor.js"></script>
+  </head>
+
+  <body>
+    <!-- <h1 style="font-size: 100; color: white">Sound</h1> -->
+    <a-scene
+      background="color:black; "
+      pool__plane="
+        mixin: plane_m; 
+        size: 30;
+        container: #plane_group
+        "
+      pool__planetwo="
+        mixin: plane_m; 
+        size: 30;
+        container: #plane_group_two
+        "
+      pool__planethree="
+        mixin: plane_m; 
+        size: 30;
+        container: #plane_group_three
+        "
+      pool__planefour="
+        mixin: plane_m; 
+        size: 30;
+        container: #plane_group_four
+        "
+      pool__planefive="
+      mixin: plane_m; 
+      size: 30;
+      container: #plane_group_five
+      "
+      pool__planesix="
+      mixin: plane_m; 
+      size: 30;
+      container: #plane_group_six
+      "
+    >
+      <!-- <a-sky color="black"></a-sky> -->
+      <a-assets>
+        <!-- 聲音 tag 
+					 preload  自動下載聲音
+				-->
+        <audio
+          id="bg-music"
+          src="./mv-template/assets/sound/Intro.mp3"
+          preload="true"
+        ></audio>
+        <!-- animations -->
+        <a-mixin
+          id="animation__rotation"
+          animation__rotation="
+            property:rotation; 
+            dur:3000;
+            loop:true; 
+            to: 0 360 0; 
+      "
+        >
+        </a-mixin>
+        <a-mixin
+          id="animation__position"
+          animation__position="
+            property:position; 
+            from: 0 1 -5; 
+            to: 0 3.5 -5; 
+            dur:2000; 
+            dir: alternate; 
+            loop:true; 
+            easing:easeInOutBack;
+      "
+        >
+        </a-mixin>
+
+        <a-mixin
+          id="animation__positionModle"
+          animation__position="
+          property:position; 
+          to: 0 15 -10 ;
+          dur:1000; 
+          dir: alternate; 
+          loop:true; 
+          easing:easeInOutQuint;
+    "
+        >
+        <a-mixin
+        id="animation__rotationModle"
+        delay="100";
+        animation__position="
+        property:rotation; 
+        to: 0 -360 0; 
+        dur:3000; 
+        dir: alternate; 
+        loop:true; 
+        easing:easeInOutQuint;
+       
+  "
+      >
+        </a-mixin>
+        <a-mixin
+          id="animation__scaleUp"
+          animation__scaleUp="
+            property:scale;
+            to: 1 1 1;
+            startEvents: mouseenter;
+      "
+        ></a-mixin>
+        <a-mixin
+          id="animation__scaleDown"
+          animation__scaleDown="
+            material.color: black ;
+            property:scale;
+            to: 0.5 0.5 0.5;
+            startEvents: mouseleave;
+      "
+        ></a-mixin>
+
+        <a-mixin
+          id="animation__fadeIn"
+          animation__fadeIn="
+          property: material.opacity;
+          from: 0;
+          to: 0.4;
+          loop: true;
+          dir: alternate; 
+          dur: 500;
+          easing:easeInOutBack;
+          "
+        ></a-mixin>
+
+        <!-- animations -->
+        <!-- pool -->
+        <a-mixin
+          id="plane_m"
+          mixin="animation__fadeIn"
+          geometry="primitive:plane; height:0.8; "
+          rotation="-90 0 0"
+        ></a-mixin>
+
+        <a-mixin
+          id="plane_l"
+          mixin="animation__fadeIn"
+          geometry="primitive:plane; "
+    
+          rotation="-40 0 0"
+        ></a-mixin>
+
+        <a-mixin
+          id="animation__light"
+          animation__light="
+          property: light.color;
+          from: #EAEAEA;
+          to: #1A1A1A;
+          loop: true;
+          dir: alternate; 
+          dur: 1000;
+          easing:easeInOutQuint;
+        "
+        ></a-mixin>
+
+        <a-assets-item
+          id="model"
+          src="./mv-template/model/scene.gltf"
+        ></a-assets-item>
+        <a-assets-item
+          id="mountain"
+          src="./mv-template/mountain/scene.gltf"
+        ></a-assets-item>
+        <!-- pool -->
+        <a-assets>
+          <video id="video" autoplay loop="true" src="./mv-template/img/test.mp4"></video>
+        </a-assets>
+      </a-assets>
+
+      <!-- <a-box src="./mv-template/img/vuvu2.jpeg"  position="0 4 -20" scale="20 15 10" ></a-box> -->
+      <!-- <a-box position="0 4 -20" scale="20 10 10" opacity="0.1">  -->
+      <!-- </a-box> -->
+      <a-video src="#video" opacity="0.8"  position="0 4 -20" geometry="primitive:box;"  scale="10 10 10" rotation="0 45 0"></a-video>
+
+      <!-- <a-video src="./mv-template/img/AVSEQ01.DAT"  position="0 3 -20" scale="20 10 10" ></a-video> -->
+      <!-- <a-gltf-model
+        src="#model"
+        mixin="
+        animation__rotationModle
+        "
+        class="interactable"
+        scale="3 3 3"
+        position="0 15 -20"
+        rotation="0 0 0"
+        sound="src: #bg-music; positional:false; on:click; "
+        firstsound
+        emitonclick
+        delay="50"
+      ></a-gltf-model> -->
+      <a-gltf-model
+        src="#mountain"
+        scale="100 100 100"
+        position="-30 -20 19"
+        rotation="0 0 0"
+      ></a-gltf-model>
+      <a-light
+        type="point"
+        mixin="animation__light"
+        color="#B516FF"
+        position="0 10 0"
+      ></a-light>
+      <a-entity id="plane_group" generatefloor> </a-entity>
+
+      <a-entity id="plane_group_two" position="1 0 0" generatefloor> </a-entity>
+
+      <a-entity id="plane_group_three" position="2 0 0" generatefloor>
+      </a-entity>
+
+      <a-entity id="plane_group_four" position="-1 0 0" generatefloor>
+      </a-entity>
+
+      <a-entity
+        id="plane_group_five"
+        position="-2 0 0"
+        generatefloor
+      ></a-entity>
+      <!-- <a-entity id="plane_group_six" position="-3 0 0" generatefloor></a-entity> -->
+
+      <!-- <a-entity id="plane_group_l" position="-2 0 0" generatefloor> </a-entity> -->
+      <!-- <a-entity position="0 1 -2" mixin="plane_m"></a-entity> -->
+      <!-- <a-entity position="0 0 -2" mixin="plane_m"></a-entity> -->
+
+      <!-- <a-sound src="#bg-music" firstsound></a-sound> -->
+      <!-- a-entity 可以自訂更多關於 component 的功能 -->
+      <!-- <a-entity sound="src: #bg-music;  " firstsound> </a-entity> -->
+      <!-- 
+        聲音預設會跟預設物件一起移動  
+         # sound 屬性 https://aframe.io/docs/1.3.0/components/sound.html
+         1. positional:false; 不要根據物件位置移動改變聲音大小
+         2. on: click 點擊的時候播放
+
+        #  animation 屬性 https://aframe.io/docs/1.3.0/components/animation.html
+         1. property:potion; 根據位置做動畫
+         2. property:position; from: 0 1 -5; to: 0 3 -5; 由上往下
+         3. dur: 3000; 移動秒數
+         4. dir: alternate; 動作雙向移動 (不寫的話動作是單向的)
+         5. loop : 2 ; 重複次數
+         6. easing:easeOutElastic; 動畫類型  https://easings.net/#
+         7. animation__position 可以重複套用不樣的屬性內容 e.g 可以套用多個動畫
+         8. startEvents: mouseenter; 動畫事件監聽滑鼠滑入
+         8. startEvents: mouseleave; 動畫事件監聽滑鼠離開
+
+         # a-mixin 把重複的東西組合起來 
+
+         # pool
+         1.size: 10; 重複幾個
+         2.container: #plane_m; 可裝生成的 pool
+        
+      -->
+
+      <!-- <a-box
+        mixin="
+        animation__rotation
+        animation__position
+        animation__scaleUp 
+        animation__scaleDown"
+        class="interactable"
+        rotation="-90 0 0"
+        delay="50"
+        color="grey"
+        position="0 0 -5"
+        sound="src: #bg-music; positional:false; on:click; "
+        firstsound
+        emitonclick
+      >
+      </a-box> -->
+
+      <!-- <a-sphere
+        mixin="
+          animation__rotation
+          animation__position
+          animation__scaleUp 
+          animation__scaleDown"
+        class="interactable"
+        rotation="-90 0 0"
+        delay="50"
+        color="grey"
+        position="0 0 -5"
+        sound="src: #bg-music; positional:false; on:click; "
+        firstsound
+        emitonclick
+      >
+      </a-sphere> -->
+
+      <!-- 
+       click event 需要 cursor  
+       camera 是為了要可以拿到點擊的 event
+      -->
+      <!-- <a-entity camera position="0 1.6 0" look-controls> -->
+        <!-- cursor -->
+        <!-- <a-entity
+          cursor="rayOrigin:mouse;"
+          raycaster="objects: .interactable"
+        ></a-entity> -->
+      <!-- </a-entity> -->
+    </a-scene>
+  </body>
+</html>
